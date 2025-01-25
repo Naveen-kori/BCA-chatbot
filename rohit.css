@@ -6,10 +6,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-image: url('https://github.com/Naveennoobda/BCA-chatbot/blob/main/p4.jpg?raw=true'); /* Background image */
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
+    background-color: #f4f4f9;
 }
 
 /* Chatbox Styles */
@@ -28,8 +25,7 @@ body {
 h1 {
     text-align: center;
     font-size: 1.7em;
-    color: #0d0c0c; /* Heading color */
-    font-weight: bold;
+    color: #333;
 }
 
 /* Chat Container */
@@ -40,36 +36,15 @@ h1 {
 }
 
 #chat-log {
-    position: relative;
     display: flex;
     flex-direction: column;
     gap: 10px;
     max-height: 300px;
     overflow-y: auto;
     padding: 10px;
-    border: 1px solid #f9f9f9;
+    border: 1px solid #ccc;
     border-radius: 10px;
-}
-
-#chat-log::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://github.com/Naveennoobda/BCA-chatbot/blob/main/bcafront.jpeg?raw=true'); /* Chat background image */
-    background-size: cover; /* Cover the entire area */
-    background-position: center center;
-    background-repeat: no-repeat;
-    opacity: 0.6; /* Slightly transparent for readability */
-    z-index: 1;
-    border-radius: 10px;
-}
-
-#chat-log > * {
-    position: relative;
-    z-index: 2; /* Ensure text is above the background */
+    background-color: #fff;
 }
 
 /* Chat Messages */
@@ -81,7 +56,6 @@ h1 {
     word-wrap: break-word;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Chatbot Message */
@@ -109,7 +83,6 @@ h1 {
 .input-container {
     display: flex;
     gap: 10px;
-    align-items: center;
 }
 
 input[type="text"] {
@@ -118,12 +91,6 @@ input[type="text"] {
     border: 1px solid #ccc;
     border-radius: 25px;
     font-size: 1em;
-    outline: none;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-input[type="text"]:focus {
-    border-color: #4CAF50;
 }
 
 button {
@@ -134,14 +101,8 @@ button {
     border-radius: 25px;
     cursor: pointer;
     font-size: 1em;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
 }
 
 button:hover {
     background-color: #45a049;
-}
-
-button:focus {
-    outline: none;
 }
