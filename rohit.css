@@ -6,7 +6,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-image: url('https://github.com/Naveennoobda/BCA-chatbot/blob/main/p4.jpg?raw=true'); /* Add your background image here */
+    background-image: url('bcafront.jpeg'); /* Add your background image here */
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -22,115 +22,14 @@ body {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    position: relative; /* This allows the pseudo-element to be positioned inside */
 }
 
-/* Chat Container */
-#chat-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    position: relative; /* Allows positioning of the pseudo-element */
+/* Header */
+h1 {
+    text-align: center;
+    font-size: 1.6em;
+    color: #0072ff;
+    font-weight: bold;
 }
 
-/* Background Image with Low Opacity for Chat Container */
-#chat-container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://github.com/Naveennoobda/BCA-chatbot/blob/main/bcafront.jpeg?raw=true'); /* Replace with your desired background image */
-    background-size: cover;
-    background-position: center;
-    z-index: -1; /* Ensure that the image stays behind the chat content */
-}
-
-/* Chat Log Styles */
-#chat-log {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-height: 300px;
-    overflow-y: auto;
-    padding: 10px;
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-/* Chat Messages */
-.message {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    max-width: 80%;
-    word-wrap: break-word;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Chatbot Message */
-.chatbot-msg {
-    background-color: #4CAF50;
-    color: white;
-    align-self: flex-start;
-}
-
-/* User Message */
-.user-msg {
-    background-color: #f1f1f1;
-    color: #333;
-    align-self: flex-end;
-}
-
-/* Message Icons */
-.icon {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%; /* Circular icons */
-}
-
-/* Input Field and Button */
-.input-container {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-input[type="text"] {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 25px;
-    font-size: 1em;
-    outline: none;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-input[type="text"]:focus {
-    border-color: #4CAF50;
-}
-
-button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #4CAF50;
-    color: white;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 1em;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-button:focus {
-    outline: none;
-}
+/*
