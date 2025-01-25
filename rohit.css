@@ -28,7 +28,7 @@ body {
 h1 {
     text-align: left;
     font-size: 1.6em;
-    color: #0d0c0c;/* heading color*/
+    color: #0d0c0c; /* Heading color */
     font-weight: bold;
 }
 
@@ -46,9 +46,13 @@ h1 {
     max-height: 300px;
     overflow-y: auto;
     padding: 10px;
-    border: 1px solid #f9f9f9;/*inside container border color */
+    border: 1px solid #f9f9f9; /* Inside container border color */
     border-radius: 10px;
-    background-color:#f9f9f9;
+    background-image: url('https://your-image-url-here'); /* Replace with your desired image URL */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0.8; /* Set low opacity for the background image */
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
