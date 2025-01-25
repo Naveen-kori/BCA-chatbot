@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BCA Chatbot</title>
-    <!-- Linking CSS file -->
     <link rel="stylesheet" href="rohit.css">
 </head>
 <body>
     <div class="chatbox">
-        <h1>Welcome to the BCA Department </h1>
+        <h1>Welcome to the BCA Department Chatbot!</h1>
         <div id="chat-container">
             <div id="chat-log"></div>
             <div class="input-container">
@@ -25,88 +24,83 @@
     </div>
 
     <script>
-        // Function to make text speak
+        // Function to make the chatbot speak
         function speakText(text) {
             const synth = window.speechSynthesis;
             const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = "en-US"; // English language voice
-            utterance.rate = 1; // Normal speed
-            utterance.pitch = 1; // Normal pitch
+            utterance.lang = "en-US";
+            utterance.rate = 1;
+            utterance.pitch = 1;
             synth.speak(utterance);
         }
 
-        // Display and speak predefined messages
-        function displayPredefinedMessages(messages) {
+        // Predefined responses based on keywords
+        const keywordResponses = {
+            "hello": "Hi there! How can I assist you?",
+            "how are you": "I'm just a chatbot, but I'm functioning perfectly! How about you?",
+            "your name": "I am Dhooni Baba, your friendly department chatbot.",
+            "bye": "Goodbye! Have a great day!",
+            "bca": "BCA stands for Bachelor of Computer Applications. It's a great field to explore!",
+            "department": "The BCA department provides excellent opportunities in computer science and IT.",
+            "h.o.d": "Dr. P.K. Rai is the Head of the Department.",
+            "help": "Sure! Let me know how I can assist you.",
+        };
+
+        // Display and speak predefined messages when the page loads
+        window.onload = function () {
+            const predefinedMessages = [
+                "I'm Dhooni Baba, the chatbot. Speed 1 terahertz, memory 1 zettabyte.",
+                "Chatbot for BCA Department."
+            ];
+
             const chatLog = document.getElementById("chat-log");
 
-            messages.forEach((message, index) => {
+            predefinedMessages.forEach((message, index) => {
                 setTimeout(() => {
-                    // Add bot message to chat log
                     chatLog.innerHTML += 
                         `<div class="message chatbot-msg">
                             <img src="https://github.com/Naveennoobda/BCA-chatbot/blob/main/bot.png?raw=true" alt="Chatbot Icon" class="icon">
                             <span>${message}</span>
                         </div>`;
-                    
-                    // Speak the message
                     speakText(message);
-
-                    // Scroll to the bottom of the chat log
                     chatLog.scrollTop = chatLog.scrollHeight;
-                }, index * 3000); // Delay between messages (3 seconds)
+                }, index * 3000);
             });
-        }
-
-        // On page load, display and speak predefined messages
-        window.onload = function () {
-            const predefinedMessages = [
-                "I'm Chitti the chatbot. Speed 1 terahertz, memory 1 zigabyte.",
-                "Chatbot for bca department."
-            ];
-
-            displayPredefinedMessages(predefinedMessages);
         };
 
-        // Function to send user message and respond
+        // Function to send the user message and respond
         function sendMessage() {
             const userInput = document.getElementById("user-input").value.trim();
             const chatLog = document.getElementById("chat-log");
 
             if (userInput) {
-                // Add user message to chat log
+                // Add the user's message to the chat log
                 chatLog.innerHTML += 
                     `<div class="message user-msg">
                         <img src="https://github.com/Naveennoobda/BCA-chatbot/blob/main/user.png?raw=true" alt="User Icon" class="icon">
                         <span>${userInput}</span>
                     </div>`;
 
-                // Simulate bot response
+                // Process chatbot response
                 setTimeout(() => {
                     let response = "I'm sorry, I don't understand that.";
-                    if (userInput.toLowerCase() === "hello") {
-                        response = "Hi there! How can I assist you?";
-                    } else if (userInput.toLowerCase() === "how are you") {
-                        response = "I'm doing fine! How about you?";
-                    } else if (userInput.toLowerCase() === "what is your name") {
-                        response = "I am Dhooni Baba, your friendly department chatbot!";
-                    } else if (userInput.toLowerCase() === "bye") {
-                        response = "Goodbye! Have a great day!";
-                        setTimeout(() => {
-                            window.location.reload();
-                        }, 2000);
+
+                    // Match user input with keyword-based responses
+                    for (const keyword in keywordResponses) {
+                        if (userInput.toLowerCase().includes(keyword)) {
+                            response = keywordResponses[keyword];
+                            break;
+                        }
                     }
 
-                    // Add bot response to chat log
+                    // Add chatbot's response to the chat log
                     chatLog.innerHTML += 
                         `<div class="message chatbot-msg">
                             <img src="https://github.com/Naveennoobda/BCA-chatbot/blob/main/bot.png?raw=true" alt="Chatbot Icon" class="icon">
                             <span>${response}</span>
                         </div>`;
-
-                    // Speak the bot's response
+                    
                     speakText(response);
-
-                    // Scroll to the bottom of the chat log
                     chatLog.scrollTop = chatLog.scrollHeight;
                 }, 1000);
 
@@ -115,7 +109,7 @@
             }
         }
 
-        // Function to handle Enter key press
+        // Function to handle the Enter key press
         function handleKeyPress(event) {
             if (event.key === "Enter") {
                 sendMessage();
