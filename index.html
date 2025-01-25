@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot</title>
-	<!-- Linking CSS file here -->
+    <!-- Linking CSS file here -->
     <link rel="stylesheet" href="rohit.css">
 </head>
 <body>
@@ -12,8 +12,10 @@
         <h1>Welcome to the BCA Department Chatbot!</h1>
         <div id="chat-container">
             <div id="chat-log"></div>
-            <input type="text" id="user-input" placeholder="Ask me something..." />
-            <button onclick="sendMessage()">Send</button>
+            <div class="input-container">
+                <input type="text" id="user-input" placeholder="Ask me something..." />
+                <button onclick="sendMessage()">Send</button>
+            </div>
         </div>
     </div>
 
@@ -23,9 +25,14 @@
             const chatLog = document.getElementById("chat-log");
 
             // Add user message to chat log
-            chatLog.innerHTML += "<div><strong>You:</strong> " + userInput + "</div>";
+            chatLog.innerHTML += `
+                <div class="message user-msg">
+                    <img src="user-icon.png" alt="User Icon" class="icon">
+                    <span>${userInput}</span>
+                </div>
+            `;
 
-            // Make API call to backend chatbot (In this case, we'll simulate a response)
+            // Simulate chatbot response
             setTimeout(function () {
                 let response = "I'm sorry, I don't understand that.";
                 if (userInput.toLowerCase() === "hello") {
@@ -41,9 +48,16 @@
                     }, 2000);
                 }
 
-                chatLog.innerHTML += "<div><strong>Chatbot:</strong> " + response + "</div>";
-                document.getElementById("user-input").value = ''; // Clear input field
-                chatLog.scrollTop = chatLog.scrollHeight; // Scroll to bottom
+                chatLog.innerHTML += `
+                    <div class="message chatbot-msg">
+                        <img src="chatbot-icon.png" alt="Chatbot Icon" class="icon">
+                        <span>${response}</span>
+                    </div>
+                `;
+
+                // Clear input field and scroll to bottom
+                document.getElementById("user-input").value = '';
+                chatLog.scrollTop = chatLog.scrollHeight;
             }, 1000);
         }
     </script>
