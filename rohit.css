@@ -62,22 +62,18 @@ h1 {
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    background-size: cover; /* Ensures the background image covers the entire area */
-    background-position: center;
-    position: relative; /* Required for overlay positioning */
 }
 
 /* Chatbot Message */
 .chatbot-msg {
-    background-image: url('https://github.com/Naveennoobda/BCA-chatbot/blob/main/bot.png?raw=true'); /* Replace with your image */
-    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent background to ensure readability */
+    background-color: #4CAF50;
+    color: white;
     align-self: flex-start;
 }
 
 /* User Message */
 .user-msg {
-    background-image: url('user-bg.jpg'); /* Replace with your image */
-    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent background */
+    background-color: #f1f1f1;
     color: #333;
     align-self: flex-end;
 }
