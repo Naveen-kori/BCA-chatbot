@@ -1,151 +1,134 @@
-/* Global Styles */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-image: url('https://github.com/Naveennoobda/BCA-chatbot/blob/main/p4.jpg?raw=true'); /* Add your background image here */
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbox with Image Background</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('https://github.com/Naveennoobda/BCA-chatbot/blob/main/p4.jpg?raw=true'); /* Add your background image here */
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
 
-/* Chatbox Styles */
-.chatbox {
-    width: 400px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
+        /* Chatbox Styles */
+        .chatbox {
+            width: 400px;
+            background-image: url('https://github.com/Naveennoobda/BCA-chatbot/blob/main/p2.jpg?raw=true'); /* Replace with your desired image URL */
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
 
-/* Header */
-h1 {
-    text-align: center;
-    font-size: 1.7em;
-    color: #0d0c0c; /* Heading color */
-    font-weight: bold;
-}
+        /* Header */
+        h1 {
+            text-align: center;
+            font-size: 1.7em;
+            color: #0d0c0c; /* Heading color */
+            font-weight: bold;
+        }
 
-/* Chat Container */
-#chat-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
+        /* Chat Container */
+        #chat-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
 
-#chat-log {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-height: 300px;
-    overflow-y: auto;
-    padding: 10px;
-    border: 1px solid #f9f9f9; /* Inside container border color */
-    border-radius: 10px;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-}
+        #chat-log {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+            border: 1px solid #f9f9f9; /* Inside container border color */
+            border-radius: 10px;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
 
-#chat-log::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://github.com/Naveennoobda/BCA-chatbot/blob/main/p2.jpg?raw=true'); /* Replace with your desired image URL */
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    opacity: 1.5; /* Adjust the opacity of the background image */
-    z-index: 1;
-    border-radius: 10px;
-}
+        /* Chat Messages */
+        .message {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            max-width: 80%;
+            word-wrap: break-word;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
 
-#chat-log > * {
-    position: relative;
-    z-index: 2; /* Ensure the content is above the background image */
-}
+        /* Chatbot Message */
+        .chatbot-msg {
+            background-color: #4CAF50;
+            color: white;
+            align-self: flex-start;
+        }
 
-/* Chat Messages */
-.message {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    max-width: 80%;
-    word-wrap: break-word;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
+        /* User Message */
+        .user-msg {
+            background-color: #f1f1f1;
+            color: #333;
+            align-self: flex-end;
+        }
 
-/* Chatbot Message */
-.chatbot-msg {
-    background-color: #4CAF50;
-    color: white;
-    align-self: flex-start;
-}
+        /* Input Field and Button */
+        .input-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
 
-/* User Message */
-.user-msg {
-    background-color: #f1f1f1;
-    color: #333;
-    align-self: flex-end;
-}
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            font-size: 1em;
+            outline: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
 
-/* Message Icons */
-.icon {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%; /* Circular icons */
-}
+        input[type="text"]:focus {
+            border-color: #4CAF50;
+        }
 
-/* Input Field and Button */
-.input-container {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
 
-input[type="text"] {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 25px;
-    font-size: 1em;
-    outline: none;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
+        button:hover {
+            background-color: #45a049;
+        }
 
-input[type="text"]:focus {
-    border-color: #4CAF50;
-}
-
-button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #4CAF50;
-    color: white;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 1em;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-button:focus {
-    outline: none;
-}
+        button:focus {
+            outline: none;
+        }
+   
