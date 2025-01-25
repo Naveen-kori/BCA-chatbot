@@ -20,7 +20,7 @@
                 <!-- Second predefined message -->
                 <div class="message chatbot-msg">
                     <img src="https://github.com/Naveennoobda/BCA-chatbot/blob/main/bot.png?raw=true" alt="Chatbot Icon" class="icon">
-                    <span>"Chatbot for BCA department chiiti."</span>
+                    <span>"Chatbot for BCA department. My name is Chitti."</span>
                 </div>
             </div>
             <div class="input-container">
@@ -48,13 +48,26 @@
         window.onload = function () {
             const predefinedMessages = [
                 "Hello. I am Chitti, the chatbot. Speed 1 THz, Memory 1 zettabyte.",
-                " Chatbot for BCA department my name is chitti."
+                "Chatbot for BCA department. My name is Chitti."
             ];
+
+            const chatLog = document.getElementById("chat-log");
 
             predefinedMessages.forEach((message, index) => {
                 setTimeout(() => {
+                    // Add message to chat log
+                    chatLog.innerHTML += 
+                        `<div class="message chatbot-msg">
+                            <img src="https://github.com/Naveennoobda/BCA-chatbot/blob/main/bot.png?raw=true" alt="Chatbot Icon" class="icon">
+                            <span>${message}</span>
+                        </div>`;
+                    
+                    // Speak the message
                     speakText(message);
-                }, index * 2000); // Add 3-second delay between each message
+
+                    // Scroll to the bottom of the chat log
+                    chatLog.scrollTop = chatLog.scrollHeight;
+                }, index * 3000); // Add 3-second delay between each message
             });
         };
 
