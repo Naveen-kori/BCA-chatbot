@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot</title>
-    <!-- Linking CSS file -->
     <link rel="stylesheet" href="rohit.css">
 </head>
 <body>
@@ -78,18 +77,27 @@
 
                 // Simulate chatbot response
                 setTimeout(function () {
+                    // Define keyword-response mappings
+                    const responses = {
+                        "hello": "Hi there! How can I assist you?",
+                        "how are you": "I'm doing fine! How about you?",
+                        "name": "I am your friendly department chatbot!",
+                        "bye": "Goodbye! Have a great day!",
+                        "bca": "BCA stands for Bachelor of Computer Applications. It's a great field!",
+                        "help": "Sure! Let me know how I can help you.",
+                        "department": "This chatbot is here to assist with the BCA department queries."
+                        "h.o.d": "Dr.Pk.Rai."
+                    };
+
+                    // Default response if no keywords are matched
                     let response = "I'm sorry, I don't understand that.";
-                    if (userInput.toLowerCase() === "hello") {
-                        response = "Hi there! How can I assist you?";
-                    } else if (userInput.toLowerCase() === "how are you") {
-                        response = "I'm doing fine! How about you?";
-                    } else if (userInput.toLowerCase() === "what is your name") {
-                        response = "I am your friendly department chatbot!";
-                    } else if (userInput.toLowerCase() === "bye") {
-                        response = "Goodbye! Have a great day!";
-                        setTimeout(function () {
-                            window.location.reload();
-                        }, 2000);
+
+                    // Check for keywords in user input
+                    for (let keyword in responses) {
+                        if (userInput.toLowerCase().includes(keyword)) {
+                            response = responses[keyword];
+                            break;
+                        }
                     }
 
                     // Add chatbot response to chat log
