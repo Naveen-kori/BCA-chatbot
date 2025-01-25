@@ -37,7 +37,7 @@ body {
     background-position: center center;
     background-repeat: no-repeat;
     z-index: 0;
-    opacity: 0.8; /* Adjust the opacity as needed */
+    opacity: 3.5; /* Adjust the opacity as needed */
     border-radius: 15px;
 }
 
