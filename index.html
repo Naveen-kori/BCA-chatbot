@@ -11,16 +11,7 @@
     <div class="chatbox">
         <h1>Welcome to the BCA Department Chatbot!</h1>
         <div id="chat-container">
-            <div id="chat-log">
-                <!-- First predefined message -->
-                <div class="message chatbot-msg">
-                    <img src="https://github.com/Naveennoobda/BCA-chatbot/blob/main/bot.png?raw=true" alt="Chatbot Icon" class="icon">
-                </div>
-                <!-- Second predefined message -->
-                <div class="message chatbot-msg">
-                    <img src="https://github.com/Naveennoobda/BCA-chatbot/blob/main/bot.png?raw=true" alt="Chatbot Icon" class="icon">
-                </div>
-            </div>
+            <div id="chat-log"></div>
             <div class="input-container">
                 <input 
                     type="text" 
@@ -38,7 +29,9 @@
         function speakText(text) {
             const synth = window.speechSynthesis;
             const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = "en-US"; // Set language to English
+            utterance.lang = "en-US"; // English voice
+            utterance.rate = 1; // Speed of speech
+            utterance.pitch = 1; // Pitch of voice
             synth.speak(utterance);
         }
 
@@ -65,7 +58,7 @@
 
                     // Scroll to the bottom of the chat log
                     chatLog.scrollTop = chatLog.scrollHeight;
-                }, index * 3000); // Add 3-second delay between each message
+                }, index * 3000); // Delay of 3 seconds between messages
             });
         };
 
