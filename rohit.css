@@ -52,7 +52,6 @@ h1 {
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    opacity: 0.8; /* Set low opacity for the background image */
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
