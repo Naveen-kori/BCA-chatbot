@@ -44,7 +44,7 @@ body {
     background-image: url('https://github.com/Naveennoobda/BCA-chatbot/blob/main/bcafront.jpeg?raw=true'); /* Replace with your desired background image */
     background-size: cover;
     background-position: center;
-    opacity: 0.2; /* Adjust the opacity to make the image more or less transparent */
+    opacity: 1; /* Adjust the opacity to make the image more or less transparent */
     z-index: -1; /* Ensure that the image stays behind the chat content */
 }
 
