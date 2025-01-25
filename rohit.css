@@ -15,13 +15,28 @@ body {
 /* Chatbox Styles */
 .chatbox {
     width: 400px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 15px;
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Background Image with Low Opacity */
+.chatbox::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('chatbox-bg.jpg'); /* Replace with your desired background image */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2; /* Adjust this value to control the opacity */
+    z-index: -1; /* Ensures the image is behind other content */
 }
 
 /* Header */
