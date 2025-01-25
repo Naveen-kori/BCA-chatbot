@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BCA Chatbot</title>
+    <title>Chatbot</title>
     <!-- Linking CSS file -->
     <link rel="stylesheet" href="rohit.css">
 </head>
@@ -29,19 +29,24 @@
         function speakText(text) {
             const synth = window.speechSynthesis;
             const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = "en-US"; // English language voice
-            utterance.rate = 1; // Normal speed
-            utterance.pitch = 1; // Normal pitch
+            utterance.lang = "en-US"; // English voice
+            utterance.rate = 1; // Speed of speech
+            utterance.pitch = 1; // Pitch of voice
             synth.speak(utterance);
         }
 
-        // Display and speak predefined messages
-        function displayPredefinedMessages(messages) {
+        // Speak predefined messages when the page loads
+        window.onload = function () {
+            const predefinedMessages = [
+                "Hello. I am Chitti, the chatbot. Speed 1 THz, Memory 1 zettabyte.",
+                "Chatbot for BCA department."
+            ];
+
             const chatLog = document.getElementById("chat-log");
 
-            messages.forEach((message, index) => {
+            predefinedMessages.forEach((message, index) => {
                 setTimeout(() => {
-                    // Add bot message to chat log
+                    // Add message to chat log
                     chatLog.innerHTML += 
                         `<div class="message chatbot-msg">
                             <img src="https://github.com/Naveennoobda/BCA-chatbot/blob/main/bot.png?raw=true" alt="Chatbot Icon" class="icon">
@@ -53,25 +58,16 @@
 
                     // Scroll to the bottom of the chat log
                     chatLog.scrollTop = chatLog.scrollHeight;
-                }, index * 3000); // Delay between messages (3 seconds)
+                }, index * 3000); // Delay of 3 seconds between messages
             });
-        }
-
-        // On page load, display and speak predefined messages
-        window.onload = function () {
-            const predefinedMessages = [
-                ""Hello world. I am Chitti, The chatbot. Speed 1 THz. Memory 1 zettabyte",
-                "chatbot for BCA department"
-            ];
-
-            displayPredefinedMessages(predefinedMessages);
         };
 
-        // Function to send user message and respond
+        // Function to send the message
         function sendMessage() {
             const userInput = document.getElementById("user-input").value.trim();
             const chatLog = document.getElementById("chat-log");
 
+            // Check if input is not empty
             if (userInput) {
                 // Add user message to chat log
                 chatLog.innerHTML += 
@@ -80,30 +76,30 @@
                         <span>${userInput}</span>
                     </div>`;
 
-                // Simulate bot response
-                setTimeout(() => {
+                // Simulate chatbot response
+                setTimeout(function () {
                     let response = "I'm sorry, I don't understand that.";
                     if (userInput.toLowerCase() === "hello") {
                         response = "Hi there! How can I assist you?";
                     } else if (userInput.toLowerCase() === "how are you") {
                         response = "I'm doing fine! How about you?";
                     } else if (userInput.toLowerCase() === "what is your name") {
-                        response = "I am Dhooni Baba, your friendly department chatbot!";
+                        response = "I am your friendly department chatbot!";
                     } else if (userInput.toLowerCase() === "bye") {
                         response = "Goodbye! Have a great day!";
-                        setTimeout(() => {
+                        setTimeout(function () {
                             window.location.reload();
                         }, 2000);
                     }
 
-                    // Add bot response to chat log
+                    // Add chatbot response to chat log
                     chatLog.innerHTML += 
                         `<div class="message chatbot-msg">
                             <img src="https://github.com/Naveennoobda/BCA-chatbot/blob/main/bot.png?raw=true" alt="Chatbot Icon" class="icon">
                             <span>${response}</span>
                         </div>`;
 
-                    // Speak the bot's response
+                    // Speak the chatbot response
                     speakText(response);
 
                     // Scroll to the bottom of the chat log
