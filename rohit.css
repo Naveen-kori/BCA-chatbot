@@ -64,7 +64,7 @@ h1 {
     background-repeat: no-repeat;
     opacity: 0.2; /* Slightly transparent for readability */
     z-index: 1;
-    border-radius: 10px;
+    border-radius: 30px;
 }
 
 #chat-log > * {
