@@ -62,9 +62,9 @@ h1 {
     background-size: cover; /* Cover the entire area */
     background-position: center center;
     background-repeat: no-repeat;
-    opacity: 0.2; /* Slightly transparent for readability */
+    opacity: 1.2; /* Slightly transparent for readability */
     z-index: 1;
-    border-radius: 30px;
+    border-radius: 10px;
 }
 
 #chat-log > * {
