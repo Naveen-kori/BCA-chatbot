@@ -13,52 +13,70 @@
         <div id="chat-container">
             <div id="chat-log"></div>
             <div class="input-container">
-                <input type="text" id="user-input" placeholder="Ask me something..." />
+                <input 
+                    type="text" 
+                    id="user-input" 
+                    placeholder="Ask me something..." 
+                    onkeypress="handleKeyPress(event)"
+                />
                 <button onclick="sendMessage()">Send</button>
             </div>
         </div>
     </div>
 
     <script>
+        // Function to send the message
         function sendMessage() {
-            const userInput = document.getElementById("user-input").value;
+            const userInput = document.getElementById("user-input").value.trim(); // Trim to avoid empty spaces
             const chatLog = document.getElementById("chat-log");
 
-            // Add user message to chat log
-            chatLog.innerHTML += `
-                <div class="message user-msg">
-                    <img src="https://github.com/Naveennoobda/BCA-chatbot/blob/main/user.png?raw=true" alt="User Icon" class="icon">
-                    <span>${userInput}</span>
-                </div>
-            `;
-
-            // Simulate chatbot response
-            setTimeout(function () {
-                let response = "I'm sorry, I don't understand that.";
-                if (userInput.toLowerCase() === "hello") {
-                    response = "Hi there! How can I assist you?";
-                } else if (userInput.toLowerCase() === "how are you") {
-                    response = "I'm doing fine! How about you?";
-                } else if (userInput.toLowerCase() === "what is your name") {
-                    response = "I am your friendly department chatbot!";
-                } else if (userInput.toLowerCase() === "bye") {
-                    response = "Goodbye! Have a great day!";
-                    setTimeout(function () {
-                        window.location.reload(); // Reload after 'bye'
-                    }, 2000);
-                }
-
+            // Check if input is not empty
+            if (userInput) {
+                // Add user message to chat log
                 chatLog.innerHTML += `
-                    <div class="message chatbot-msg">
-                        <img src="https://github.com/Naveennoobda/BCA-chatbot/blob/main/bot.png?raw=true" alt="Chatbot Icon" class="icon">
-                        <span>${response}</span>
+                    <div class="message user-msg">
+                        <img src="user-icon.png" alt="User Icon" class="icon">
+                        <span>${userInput}</span>
                     </div>
                 `;
 
-                // Clear input field and scroll to bottom
+                // Simulate chatbot response
+                setTimeout(function () {
+                    let response = "I'm sorry, I don't understand that.";
+                    if (userInput.toLowerCase() === "hello") {
+                        response = "Hi there! How can I assist you?";
+                    } else if (userInput.toLowerCase() === "how are you") {
+                        response = "I'm doing fine! How about you?";
+                    } else if (userInput.toLowerCase() === "what is your name") {
+                        response = "I am your friendly department chatbot!";
+                    } else if (userInput.toLowerCase() === "bye") {
+                        response = "Goodbye! Have a great day!";
+                        setTimeout(function () {
+                            window.location.reload(); // Reload after 'bye'
+                        }, 2000);
+                    }
+
+                    chatLog.innerHTML += `
+                        <div class="message chatbot-msg">
+                            <img src="chatbot-icon.png" alt="Chatbot Icon" class="icon">
+                            <span>${response}</span>
+                        </div>
+                    `;
+
+                    // Scroll to the bottom of the chat log
+                    chatLog.scrollTop = chatLog.scrollHeight;
+                }, 1000);
+
+                // Clear the input field
                 document.getElementById("user-input").value = '';
-                chatLog.scrollTop = chatLog.scrollHeight;
-            }, 1000);
+            }
+        }
+
+        // Function to handle Enter key press
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                sendMessage(); // Call the sendMessage function
+            }
         }
     </script>
 </body>
