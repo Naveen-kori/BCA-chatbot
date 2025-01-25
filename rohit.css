@@ -26,9 +26,9 @@ body {
 
 /* Header */
 h1 {
-    text-align: center;
+    text-align: left;
     font-size: 1.6em;
-    color: #0d0c0c;
+    color: #0d0c0c;/* heading color*/
     font-weight: bold;
 }
 
