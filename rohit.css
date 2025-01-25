@@ -71,7 +71,6 @@ h1 {
 .chatbot-msg {
     background-image: url('https://github.com/Naveennoobda/BCA-chatbot/blob/main/bot.png?raw=true'); /* Replace with your image */
     background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent background to ensure readability */
-    color: white;
     align-self: flex-start;
 }
 
