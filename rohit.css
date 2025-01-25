@@ -40,6 +40,7 @@ h1 {
 }
 
 #chat-log {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -48,12 +49,31 @@ h1 {
     padding: 10px;
     border: 1px solid #f9f9f9; /* Inside container border color */
     border-radius: 10px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#chat-log::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-image: url('https://github.com/Naveennoobda/BCA-chatbot/blob/main/p2.jpg?raw=true'); /* Replace with your desired image URL */
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    opacity :1.3;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    opacity: 1.5; /* Adjust the opacity of the background image */
+    z-index: 1;
+    border-radius: 10px;
+}
+
+#chat-log > * {
+    position: relative;
+    z-index: 2; /* Ensure the content is above the background image */
 }
 
 /* Chat Messages */
