@@ -15,12 +15,12 @@
                 <!-- First predefined message -->
                 <div class="message chatbot-msg">
                     <img src="https://github.com/Naveennoobda/BCA-chatbot/blob/main/bot.png?raw=true" alt="Chatbot Icon" class="icon">
-                    <span>Ram Ram bhaiya sagle jane ka, my name is Dhooni Baba, an AI chatbot for the BCA department.</span>
+                    <span>Hello.I am Chitti,the chatbot,Speed 1 THz,Memory 1 zettabyte..</span>
                 </div>
                 <!-- Second predefined message -->
                 <div class="message chatbot-msg">
                     <img src="https://github.com/Naveennoobda/BCA-chatbot/blob/main/bot.png?raw=true" alt="Chatbot Icon" class="icon">
-                    <span>Aap mere se BCA department se related query kar sakte hai.</span>
+                    <span>Chatbot for BCA department .</span>
                 </div>
             </div>
             <div class="input-container">
@@ -47,12 +47,12 @@
         // Speak predefined messages when the page loads
         window.onload = function () {
             const predefinedMessages = [
-                "Ram Ram bhaiya sagle jane ka, my name is Dhooni Baba, an AI chatbot for the BCA department.",
-                "Aap mere se BCA department se related query kar sakte hai."
+              " Hello.I am Chitti,the chatbot,Speed 1 THz,Memory 1 zettabyte."
+               " Chatbot for BCA department"
             ];
 
             predefinedMessages.forEach((message, index) => {
-                setTimeout(() => speakText(message), index * 2000); // Add delay for each message
+                setTimeout(() => speakText(message), index * 1000); // Add delay for each message
             });
         };
 
