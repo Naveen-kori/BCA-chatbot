@@ -43,7 +43,7 @@
             "bca": "BCA stands for Bachelor of Computer Applications. It's a great field to explore!",
             "department": "The BCA department provides excellent opportunities in computer science and IT.",
             "h.o.d": "Dr. P.K. Rai is the Head of the Department.",
-            "help": "Sure! Let me know how I can assist you.",
+            "help": "Sure! Let me know how I can assist you."
         };
 
         // Display and speak predefined messages when the page loads
@@ -86,12 +86,12 @@
                     let response = "I'm sorry, I don't understand that.";
 
                     // Match user input with keyword-based responses
-                    for (const keyword in keywordResponses) {
-                        if (userInput.toLowerCase().includes(keyword)) {
+                    Object.keys(keywordResponses).forEach((keyword) => {
+                        const regex = new RegExp(`\\b${keyword}\\b`, 'i'); // Matches whole words, case-insensitive
+                        if (regex.test(userInput)) {
                             response = keywordResponses[keyword];
-                            break;
                         }
-                    }
+                    });
 
                     // Add chatbot's response to the chat log
                     chatLog.innerHTML += 
