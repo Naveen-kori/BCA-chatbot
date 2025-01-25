@@ -36,6 +36,26 @@
     </div>
 
     <script>
+        // Function to make text speak
+        function speakText(text) {
+            const synth = window.speechSynthesis;
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = "hi-IN"; // Set language to Hindi (can be adjusted as needed)
+            synth.speak(utterance);
+        }
+
+        // Speak predefined messages when the page loads
+        window.onload = function () {
+            const predefinedMessages = [
+                "Ram Ram bhaiya sagle jane ka, my name is Dhooni Baba, an AI chatbot for the BCA department.",
+                "Aap mere se BCA department se related query kar sakte hai."
+            ];
+
+            predefinedMessages.forEach((message, index) => {
+                setTimeout(() => speakText(message), index * 3000); // Add delay for each message
+            });
+        };
+
         // Function to send the message
         function sendMessage() {
             const userInput = document.getElementById("user-input").value.trim();
@@ -44,12 +64,11 @@
             // Check if input is not empty
             if (userInput) {
                 // Add user message to chat log
-                chatLog.innerHTML += `
-                    <div class="message user-msg">
+                chatLog.innerHTML += 
+                    `<div class="message user-msg">
                         <img src="https://github.com/Naveennoobda/BCA-chatbot/blob/main/user.png?raw=true" alt="User Icon" class="icon">
                         <span>${userInput}</span>
-                    </div>
-                `;
+                    </div>`;
 
                 // Simulate chatbot response
                 setTimeout(function () {
@@ -67,12 +86,15 @@
                         }, 2000);
                     }
 
-                    chatLog.innerHTML += `
-                        <div class="message chatbot-msg">
+                    // Add chatbot response to chat log
+                    chatLog.innerHTML += 
+                        `<div class="message chatbot-msg">
                             <img src="https://github.com/Naveennoobda/BCA-chatbot/blob/main/bot.png?raw=true" alt="Chatbot Icon" class="icon">
                             <span>${response}</span>
-                        </div>
-                    `;
+                        </div>`;
+
+                    // Speak the chatbot response
+                    speakText(response);
 
                     // Scroll to the bottom of the chat log
                     chatLog.scrollTop = chatLog.scrollHeight;
