@@ -26,8 +26,8 @@ body {
 
 /* Header */
 h1 {
-    text-align: left;
-    font-size: 1.6em;
+    text-align: center;
+    font-size: 1.7em;
     color: #0d0c0c; /* Heading color */
     font-weight: bold;
 }
