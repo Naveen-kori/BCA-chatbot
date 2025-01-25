@@ -62,7 +62,7 @@ h1 {
     background-size: cover; /* Cover the entire area */
     background-position: center center;
     background-repeat: no-repeat;
-    opacity: 0.9; /* Slightly transparent for readability */
+    opacity: 0.6; /* Slightly transparent for readability */
     z-index: 1;
     border-radius: 10px;
 }
