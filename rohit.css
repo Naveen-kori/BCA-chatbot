@@ -6,7 +6,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-image: url('https://github.com/Naveennoobda/BCA-chatbot/blob/main/p4.jpg?raw=true'); /* Add your background image here */
+    background-image: url('https://github.com/Naveennoobda/BCA-chatbot/blob/main/p4.jpg?raw=true'); /* Background image */
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -47,12 +47,9 @@ h1 {
     max-height: 300px;
     overflow-y: auto;
     padding: 10px;
-    border: 1px solid #f9f9f9; /* Inside container border color */
+    border: 1px solid #f9f9f9;
     border-radius: 10px;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.8); /* Light background for text */
 }
 
 #chat-log::before {
@@ -62,18 +59,18 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('https://github.com/Naveennoobda/BCA-chatbot/blob/main/bcafront.jpeg?raw=true'); /* Replace with your desired image URL */
+    background-image: url('https://github.com/Naveennoobda/BCA-chatbot/blob/main/bcafront.jpeg?raw=true');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    opacity: 1.5; /* Adjust the opacity of the background image */
+    opacity: 0.3; /* Opacity applied to the background image only */
     z-index: 1;
     border-radius: 10px;
 }
 
 #chat-log > * {
     position: relative;
-    z-index: 2; /* Ensure the content is above the background image */
+    z-index: 2; /* Ensures text and content are above the background */
 }
 
 /* Chat Messages */
@@ -106,7 +103,7 @@ h1 {
 .icon {
     width: 30px;
     height: 30px;
-    border-radius: 50%; /* Circular icons */
+    border-radius: 50%;
 }
 
 /* Input Field and Button */
