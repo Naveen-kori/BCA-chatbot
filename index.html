@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot</title>
-    <!-- Linking CSS file here -->
+    <!-- Linking CSS file -->
     <link rel="stylesheet" href="rohit.css">
 </head>
 <body>
@@ -38,7 +38,7 @@
     <script>
         // Function to send the message
         function sendMessage() {
-            const userInput = document.getElementById("user-input").value.trim(); // Trim to avoid empty spaces
+            const userInput = document.getElementById("user-input").value.trim();
             const chatLog = document.getElementById("chat-log");
 
             // Check if input is not empty
@@ -63,7 +63,7 @@
                     } else if (userInput.toLowerCase() === "bye") {
                         response = "Goodbye! Have a great day!";
                         setTimeout(function () {
-                            window.location.reload(); // Reload after 'bye'
+                            window.location.reload();
                         }, 2000);
                     }
 
@@ -86,7 +86,7 @@
         // Function to handle Enter key press
         function handleKeyPress(event) {
             if (event.key === "Enter") {
-                sendMessage(); // Call the sendMessage function
+                sendMessage();
             }
         }
     </script>
