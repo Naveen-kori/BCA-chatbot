@@ -15,7 +15,7 @@
                 <!-- First predefined message -->
                 <div class="message chatbot-msg">
                     <img src="https://github.com/Naveennoobda/BCA-chatbot/blob/main/bot.png?raw=true" alt="Chatbot Icon" class="icon">
-                    <span>"Hello.I am Chitti,the chatbot,Speed 1 THz,Memory 1 zettabyte.."</span>
+                    <span>"Hello. I am Chitti, the chatbot. Speed 1 THz, Memory 1 zettabyte."</span>
                 </div>
                 <!-- Second predefined message -->
                 <div class="message chatbot-msg">
@@ -40,19 +40,21 @@
         function speakText(text) {
             const synth = window.speechSynthesis;
             const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = "hi-IN"; // Set language to Hindi (can be adjusted as needed)
+            utterance.lang = "en-US"; // Set language to English
             synth.speak(utterance);
         }
 
         // Speak predefined messages when the page loads
         window.onload = function () {
             const predefinedMessages = [
-              " Hello.I am Chitti,the chatbot,Speed 1 THz,Memory 1 zettabyte."
-               " Chatbot for BCA department"
+                "Hello. I am Chitti, the chatbot. Speed 1 THz, Memory 1 zettabyte.",
+                "Chatbot for BCA department."
             ];
 
             predefinedMessages.forEach((message, index) => {
-                setTimeout(() => speakText(message), index * 3000); // Add delay for each message
+                setTimeout(() => {
+                    speakText(message);
+                }, index * 3000); // Add 3-second delay between each message
             });
         };
 
