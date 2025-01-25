@@ -63,7 +63,7 @@ h1 {
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    opacity: 1.1; /* Opacity applied to the background image only */
+    opacity: 0.1; /* Opacity applied to the background image only */
     z-index: 1;
     border-radius: 10px;
 }
