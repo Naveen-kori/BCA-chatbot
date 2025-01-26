@@ -4,7 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BCA Chatbot</title>
-    <link rel="stylesheet" href="rohit.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .chatbox {
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            width: 400px;
+            max-width: 100%;
+        }
+        .chatbox h1 {
+            background-color: #6200ea;
+            color: #fff;
+            margin: 0;
+            padding: 15px;
+            text-align: center;
+        }
+        #chat-container {
+            display: flex;
+            flex-direction: column;
+            height: 500px;
+            justify-content: space-between;
+        }
+        #chat-log {
+            overflow-y: auto;
+            flex-grow: 1;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+        .input-container {
+            display: flex;
+            border-top: 1px solid #ccc;
+            padding: 10px;
+        }
+        .input-container input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+        .input-container button {
+            margin-left: 10px;
+            padding: 10px;
+            background-color: #6200ea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .message {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .chatbot-msg {
+            justify-content: flex-start;
+        }
+        .user-msg {
+            justify-content: flex-end;
+        }
+        .message span {
+            padding: 10px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        .chatbot-msg span {
+            background-color: #e0e0e0;
+        }
+        .user-msg span {
+            background-color: #6200ea;
+            color: white;
+        }
+        #switch-button {
+            padding: 10px;
+            border: none;
+            background-color: #6200ea;
+            color: white;
+            width: 100%;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div class="chatbox">
@@ -25,20 +115,8 @@
     </div>
 
     <script>
-        // Default context variable
         let currentChat = "default"; // "default" or "sem-1"
 
-        // Function to make the chatbot speak
-        function speakText(text) {
-            const synth = window.speechSynthesis;
-            const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = "en-US";
-            utterance.rate = 1;
-            utterance.pitch = 1;
-            synth.speak(utterance);
-        }
-
-        // Predefined responses for the default chatbot
         const defaultResponses = {
             "hello": "Hi there! How can I assist you?",
             "how are you": "I'm just a chatbot, but I'm functioning perfectly! How about you?",
@@ -52,21 +130,8 @@
             "admission": "For admission details, visit <a href='https://apsurewa.ac.in/en/admissions' target='_blank'>Admission Page</a>.",
             "exam schedule": "Check the latest exam schedule here: <a href='https://apsurewa.ac.in/en/exam-schedule' target='_blank'>Exam Schedule</a>.",
             "resources": "Find study materials and resources here: <a href='https://apsurewa.ac.in/en/resources' target='_blank'>Resources Page</a>.",
-            "working hour": "11 am to 4 pm",
-            "holiday": "Saturday, Sunday, and for national holidays",
-            "location": "APSU University Campus, Rewa 486001.",
-            "courses": "MCA and BCA",
-            "duration of courses": "MCA - 2 years & BCA - 3 years.",
-            "yearly,semester": "Semester-wise: MCA - 4 semesters, BCA - 6 semesters.",
-            "labs": "Visit this site: <a href='https://apsurewa.ac.in/en/class-rooms-seminar-halls-coap' target='_blank'>Labs</a>.",
-            "classes": "Visit this site: <a href='https://apsurewa.ac.in/en/class-rooms-seminar-halls-coap' target='_blank'>Classes</a>.",
-            "condition": "Based on student reviews, the facilities are good in all aspects.",
-            "syllabus": "Visit this site: <a href='https://apsurewa.ac.in/en/syllabus-mca' target='_blank'>Syllabus</a>.",
-            "faculty": "Visit this site: <a href='https://apsurewa.ac.in/en/faculty-members-ca' target='_blank'>Faculty</a>.",
-            "fees": "Visit this site: <a href='https://apsurewa.ac.in/files/684/fees_revision_structure.pdf' target='_blank'>Fees</a>."
         };
 
-        // Predefined responses for the Sem-1 chatbot
         const sem1Responses = {
             "subjects": "Subjects for Semester 1 include Mathematics, Programming, and Digital Logic.",
             "schedule": "Semester 1 classes start at 9:00 AM and end at 3:00 PM.",
@@ -74,96 +139,46 @@
             "resources": "Sem-1 study materials are available at <a href='https://apsurewa.ac.in/en/resources-sem1' target='_blank'>Sem-1 Resources</a>."
         };
 
-        // Display predefined chatbot messages on page load
-        window.onload = function () {
-            const predefinedMessages = [
-                "I'm Dhooni Baba, the chatbot. Speed 1 terahertz, memory 1 zettabyte.",
-                "Chatbot for BCA Department."
-            ];
-
-            const chatLog = document.getElementById("chat-log");
-
-            predefinedMessages.forEach((message, index) => {
-                setTimeout(() => {
-                    chatLog.innerHTML += 
-                        `<div class="message chatbot-msg">
-                            <img src="https://github.com/Naveennoobda/BCA-chatbot/blob/main/bot.png?raw=true" alt="Chatbot Icon" class="icon">
-                            <span>${message}</span>
-                        </div>`;
-                    speakText(message);
-                    chatLog.scrollTop = chatLog.scrollHeight;
-                }, index * 3000);
-            });
-        };
-
-        // Function to send the user message and provide a chatbot response
         function sendMessage() {
             const userInput = document.getElementById("user-input").value.trim();
             const chatLog = document.getElementById("chat-log");
 
             if (userInput) {
-                // Add the user's message to the chat log
-                chatLog.innerHTML += 
-                    `<div class="message user-msg">
-                        <img src="https://github.com/Naveennoobda/BCA-chatbot/blob/main/user.png?raw=true" alt="User Icon" class="icon">
-                        <span>${userInput}</span>
-                    </div>`;
+                chatLog.innerHTML += `<div class="message user-msg"><span>${userInput}</span></div>`;
 
-                // Process chatbot response
-                setTimeout(() => {
-                    let response = "I'm sorry, I don't understand that.";
+                let response = "I'm sorry, I don't understand that.";
+                const activeResponses = currentChat === "default" ? defaultResponses : sem1Responses;
 
-                    // Use the appropriate responses based on the current chat context
-                    const activeResponses = currentChat === "default" ? defaultResponses : sem1Responses;
+                for (let keyword in activeResponses) {
+                    if (userInput.toLowerCase().includes(keyword)) {
+                        response = activeResponses[keyword];
+                        break;
+                    }
+                }
 
-                    // Match user input with keyword-based responses
-                    Object.keys(activeResponses).forEach((keyword) => {
-                        const regex = new RegExp(`\\b${keyword}\\b`, 'i'); // Matches whole words, case-insensitive
-                        if (regex.test(userInput)) {
-                            response = activeResponses[keyword];
-                        }
-                    });
-
-                    // Add chatbot's response to the chat log
-                    chatLog.innerHTML += 
-                        `<div class="message chatbot-msg">
-                            <img src="https://github.com/Naveennoobda/BCA-chatbot/blob/main/bot.png?raw=true" alt="Chatbot Icon" class="icon">
-                            <span>${response}</span>
-                        </div>`;
-                    
-                    speakText(response.replace(/<[^>]+>/g, "")); // Speak without HTML tags
-                    chatLog.scrollTop = chatLog.scrollHeight;
-                }, 1000);
-
-                // Clear the input field
-                document.getElementById("user-input").value = '';
+                chatLog.innerHTML += `<div class="message chatbot-msg"><span>${response}</span></div>`;
+                document.getElementById("user-input").value = "";
+                chatLog.scrollTop = chatLog.scrollHeight;
             }
         }
 
-        // Function to handle the Enter key press
         function handleKeyPress(event) {
             if (event.key === "Enter") {
                 sendMessage();
             }
         }
 
-        // Function to switch between default and Sem-1 chatbot
         function switchChat() {
+            currentChat = currentChat === "default" ? "sem-1" : "default";
             const switchButton = document.getElementById("switch-button");
-            if (currentChat === "default") {
-                currentChat = "sem-1";
+            const chatLog = document.getElementById("chat-log");
+
+            if (currentChat === "sem-1") {
                 switchButton.textContent = "Switch to Default Chatbot";
-                document.getElementById("chat-log").innerHTML = 
-                    `<div class="message chatbot-msg">
-                        <span>You are now chatting with the Semester 1 Chatbot.</span>
-                    </div>`;
+                chatLog.innerHTML += `<div class="message chatbot-msg"><span>You are now chatting with the Semester 1 Chatbot.</span></div>`;
             } else {
-                currentChat = "default";
                 switchButton.textContent = "Switch for Sem-1";
-                document.getElementById("chat-log").innerHTML = 
-                    `<div class="message chatbot-msg">
-                        <span>You are now chatting with the Default Chatbot.</span>
-                    </div>`;
+                chatLog.innerHTML += `<div class="message chatbot-msg"><span>You are now chatting with the Default Chatbot.</span></div>`;
             }
         }
     </script>
