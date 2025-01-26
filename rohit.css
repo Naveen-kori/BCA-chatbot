@@ -12,12 +12,6 @@ body {
     background-repeat: no-repeat;
 }
 
-/* Chatbox Container */
-.chatbox-container {
-    display: flex;
-    gap: 20px; /* Space between default chatbot and Sem-1 button */
-}
-
 /* Chatbox Styles */
 .chatbox {
     width: 400px;
@@ -150,31 +144,4 @@ button:hover {
 
 button:focus {
     outline: none;
-}
-
-/* Sem-1 Chatbot Button Styles */
-#switch-button {
-    width: 150px;
-    height: 50px;
-    background-color: #4CAF50;
-    color: white;
-    font-size: 1em;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
-    align-self: center; /* Centers the button vertically */
-}
-
-#switch-button:hover {
-    background-color: #45a049;
-}
-
-#switch-button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 15px;
 }
