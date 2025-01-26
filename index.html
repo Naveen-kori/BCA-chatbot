@@ -10,6 +10,7 @@
     <div class="chatbox">
         <h1>Welcome to the BCA Department</h1>
         <div id="chat-container">
+            <button id="switch-button" onclick="switchChat()">Switch for Sem-1</button>
             <div id="chat-log"></div>
             <div class="input-container">
                 <input 
@@ -24,6 +25,9 @@
     </div>
 
     <script>
+        // Default context variable
+        let currentChat = "default"; // "default" or "sem-1"
+
         // Function to make the chatbot speak
         function speakText(text) {
             const synth = window.speechSynthesis;
@@ -34,8 +38,8 @@
             synth.speak(utterance);
         }
 
-        // Predefined responses with clickable links
-        const keywordResponses = {
+        // Predefined responses for the default chatbot
+        const defaultResponses = {
             "hello": "Hi there! How can I assist you?",
             "how are you": "I'm just a chatbot, but I'm functioning perfectly! How about you?",
             "your name": "I am Dhooni Baba, your friendly department chatbot.",
@@ -48,18 +52,26 @@
             "admission": "For admission details, visit <a href='https://apsurewa.ac.in/en/admissions' target='_blank'>Admission Page</a>.",
             "exam schedule": "Check the latest exam schedule here: <a href='https://apsurewa.ac.in/en/exam-schedule' target='_blank'>Exam Schedule</a>.",
             "resources": "Find study materials and resources here: <a href='https://apsurewa.ac.in/en/resources' target='_blank'>Resources Page</a>.",
-            "working hour": "11 am to 4 pm.",
-            "holiday": "Saturday, Sunday, and national holidays.",
+            "working hour": "11 am to 4 pm",
+            "holiday": "Saturday, Sunday, and for national holidays",
             "location": "APSU University Campus, Rewa 486001.",
-            "courses": "The department offers MCA and BCA courses.",
+            "courses": "MCA and BCA",
             "duration of courses": "MCA - 2 years & BCA - 3 years.",
-            "yearly, semester": "Semester-wise: MCA - 4 semesters, BCA - 6 semesters.",
-            "labs": "Visit this site for more information: <a href='https://apsurewa.ac.in/en/class-rooms-seminar-halls-coap' target='_blank'>Labs</a>.",
-            "classes": "Visit this site for more information: <a href='https://apsurewa.ac.in/en/class-rooms-seminar-halls-coap' target='_blank'>Classes</a>.",
-            "condition": "Based on student reviews, the facilities in all aspects are good.",
-            "syllabus": "Visit this site for more information: <a href='https://apsurewa.ac.in/en/syllabus-mca' target='_blank'>Syllabus</a>.",
-            "faculty": "Visit this site for more information: <a href='https://apsurewa.ac.in/en/faculty-members-ca' target='_blank'>Faculty</a>.",
-            "fees": "Visit this site for more information: <a href='https://apsurewa.ac.in/files/684/fees_revision_structure.pdf' target='_blank'>Fees</a>."
+            "yearly,semester": "Semester-wise: MCA - 4 semesters, BCA - 6 semesters.",
+            "labs": "Visit this site: <a href='https://apsurewa.ac.in/en/class-rooms-seminar-halls-coap' target='_blank'>Labs</a>.",
+            "classes": "Visit this site: <a href='https://apsurewa.ac.in/en/class-rooms-seminar-halls-coap' target='_blank'>Classes</a>.",
+            "condition": "Based on student reviews, the facilities are good in all aspects.",
+            "syllabus": "Visit this site: <a href='https://apsurewa.ac.in/en/syllabus-mca' target='_blank'>Syllabus</a>.",
+            "faculty": "Visit this site: <a href='https://apsurewa.ac.in/en/faculty-members-ca' target='_blank'>Faculty</a>.",
+            "fees": "Visit this site: <a href='https://apsurewa.ac.in/files/684/fees_revision_structure.pdf' target='_blank'>Fees</a>."
+        };
+
+        // Predefined responses for the Sem-1 chatbot
+        const sem1Responses = {
+            "subjects": "Subjects for Semester 1 include Mathematics, Programming, and Digital Logic.",
+            "schedule": "Semester 1 classes start at 9:00 AM and end at 3:00 PM.",
+            "assignments": "All assignments for Sem-1 are due by the end of this month.",
+            "resources": "Sem-1 study materials are available at <a href='https://apsurewa.ac.in/en/resources-sem1' target='_blank'>Sem-1 Resources</a>."
         };
 
         // Display predefined chatbot messages on page load
@@ -101,11 +113,14 @@
                 setTimeout(() => {
                     let response = "I'm sorry, I don't understand that.";
 
+                    // Use the appropriate responses based on the current chat context
+                    const activeResponses = currentChat === "default" ? defaultResponses : sem1Responses;
+
                     // Match user input with keyword-based responses
-                    Object.keys(keywordResponses).forEach((keyword) => {
+                    Object.keys(activeResponses).forEach((keyword) => {
                         const regex = new RegExp(`\\b${keyword}\\b`, 'i'); // Matches whole words, case-insensitive
                         if (regex.test(userInput)) {
-                            response = keywordResponses[keyword];
+                            response = activeResponses[keyword];
                         }
                     });
 
@@ -129,6 +144,26 @@
         function handleKeyPress(event) {
             if (event.key === "Enter") {
                 sendMessage();
+            }
+        }
+
+        // Function to switch between default and Sem-1 chatbot
+        function switchChat() {
+            const switchButton = document.getElementById("switch-button");
+            if (currentChat === "default") {
+                currentChat = "sem-1";
+                switchButton.textContent = "Switch to Default Chatbot";
+                document.getElementById("chat-log").innerHTML = 
+                    `<div class="message chatbot-msg">
+                        <span>You are now chatting with the Semester 1 Chatbot.</span>
+                    </div>`;
+            } else {
+                currentChat = "default";
+                switchButton.textContent = "Switch for Sem-1";
+                document.getElementById("chat-log").innerHTML = 
+                    `<div class="message chatbot-msg">
+                        <span>You are now chatting with the Default Chatbot.</span>
+                    </div>`;
             }
         }
     </script>
