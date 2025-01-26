@@ -86,10 +86,10 @@
             predefinedMessages.forEach((message, index) => {
                 setTimeout(() => {
                     chatLog.innerHTML += 
-                        <div class="message chatbot-msg">
+                        `<div class="message chatbot-msg">
                             <img src="https://github.com/Naveennoobda/BCA-chatbot/blob/main/bot.png?raw=true" alt="Chatbot Icon" class="icon">
                             <span>${message}</span>
-                        </div>;
+                        </div>`;
                     speakText(message);
                     chatLog.scrollTop = chatLog.scrollHeight;
                 }, index * 3000);
@@ -104,10 +104,10 @@
             if (userInput) {
                 // Add the user's message to the chat log
                 chatLog.innerHTML += 
-                    <div class="message user-msg">
+                    `<div class="message user-msg">
                         <img src="https://github.com/Naveennoobda/BCA-chatbot/blob/main/user.png?raw=true" alt="User Icon" class="icon">
                         <span>${userInput}</span>
-                    </div>;
+                    </div>`;
 
                 // Process chatbot response
                 setTimeout(() => {
@@ -118,7 +118,7 @@
 
                     // Match user input with keyword-based responses
                     Object.keys(activeResponses).forEach((keyword) => {
-                        const regex = new RegExp(\\b${keyword}\\b, 'i'); // Matches whole words, case-insensitive
+                        const regex = new RegExp(`\\b${keyword}\\b`, 'i'); // Matches whole words, case-insensitive
                         if (regex.test(userInput)) {
                             response = activeResponses[keyword];
                         }
@@ -126,10 +126,10 @@
 
                     // Add chatbot's response to the chat log
                     chatLog.innerHTML += 
-                        <div class="message chatbot-msg">
+                        `<div class="message chatbot-msg">
                             <img src="https://github.com/Naveennoobda/BCA-chatbot/blob/main/bot.png?raw=true" alt="Chatbot Icon" class="icon">
                             <span>${response}</span>
-                        </div>;
+                        </div>`;
                     
                     speakText(response.replace(/<[^>]+>/g, "")); // Speak without HTML tags
                     chatLog.scrollTop = chatLog.scrollHeight;
@@ -154,16 +154,16 @@
                 currentChat = "sem-1";
                 switchButton.textContent = "Switch to Default Chatbot";
                 document.getElementById("chat-log").innerHTML = 
-                    <div class="message chatbot-msg">
+                    `<div class="message chatbot-msg">
                         <span>You are now chatting with the Semester 1 Chatbot.</span>
-                    </div>;
+                    </div>`;
             } else {
                 currentChat = "default";
                 switchButton.textContent = "Switch for Sem-1";
                 document.getElementById("chat-log").innerHTML = 
-                    <div class="message chatbot-msg">
+                    `<div class="message chatbot-msg">
                         <span>You are now chatting with the Default Chatbot.</span>
-                    </div>;
+                    </div>`;
             }
         }
     </script>
